@@ -1,0 +1,1 @@
+{"ast":null,"code":"import cursos from \"./src/cursos\";\nexport default cursos;","map":{"version":3,"sources":["C:/Users/est.joao.f/Desktop/Sistemas/sistema_01/APP-BARDOCK-CURSOS/App.js"],"names":["cursos"],"mappings":"AACA,OAAOA,MAAP;AAIA,eAAeA,MAAf","sourcesContent":["\nimport cursos from './src/cursos'\n\n\n \nexport default cursos"]},"metadata":{},"sourceType":"module"}
