@@ -23,35 +23,28 @@ const Headers = (props) => {
     return (
         <div>
             <Navbar color="primary" dark expand="md">
-                <NavbarBrand href="/">Celke</NavbarBrand>
+                <NavbarBrand href="/">Solar</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <NavLink href="https://celke.com.br/">Site Celke</NavLink>
+                            <NavLink href="/buscar-id">Buscar por Id</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                            <NavLink href="/buscar-atendimentos">Buscar Atendimento</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
-                                Options
-                </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Option 1
-                  </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
-                  </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
-                  </DropdownItem>
-                            </DropdownMenu>
+                                Perfil
+                            </DropdownToggle>
+                                    <DropdownMenu >
+                                        <DropdownItem href="/teste">Dados Pessoais</DropdownItem>
+                                        <DropdownItem>Configurações</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem> Teste 1</DropdownItem>
+                                    </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavbarText>Simple Text</NavbarText>
                 </Collapse>
             </Navbar>
         </div>
