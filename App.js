@@ -72,15 +72,20 @@ class CursosList extends Component {
 
       <SafeAreaView style={styles.container}>
         <Menu></Menu>
+<br></br>
+              <div className="container text-center">
+                  <Form onSubmit={this.handleSubmit}>
+                    <label>
+                      Buscar Id Assistido:
+                    </label> 
+                    
+                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input type="submit" value="Buscar" />
 
-      <Form onSubmit={this.handleSubmit}>
-        <label>
-          Buscar Id Assistido:
-        </label> 
-        <input type="text" value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Enviar" />
+                  </Form>
+              </div>
+<br></br>
 
-      </Form>
 
       <Form>
         <Assistido data={this.state.assitido}/>
