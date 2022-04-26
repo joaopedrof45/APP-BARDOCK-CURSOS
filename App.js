@@ -12,6 +12,8 @@ class CursosList extends Component {
     this.state={
       assitido:[],
       value:'',
+      usuario:'',
+      senha:'',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,6 +25,7 @@ class CursosList extends Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
+  
 
 
   /*{Aqui seta e dispara o evento de busca na api passando os valores 
@@ -39,52 +42,108 @@ class CursosList extends Component {
   }
 
 
+  verifica_sessao(){
+
+    var data=[];
+    data['usuario'] = sessionStorage.getItem("usuario");
+    data['senha']= sessionStorage.getItem("senha");
+
+    if(data!= ""){
+      return data;
+    }else{
+      return false;
+    }
+
+  }
+
+  login_sessao(){
+    var status_sessao
+
+    if(this.verifica_sessao()==true){
+          status_sessao = false;
+        }else{
+
+            /* inserindo usuario proxy */
+            var usuario = prompt("digite seu usuario");
+            sessionStorage.setItem("usuario", usuario);
+            this.setState({
+              usuario:usuario
+            });
+            this.setState({
+              senha:senha
+            });
+
+            
+            var senha = prompt("digite sua senha");
+            sessionStorage.setItem("senha", senha);
+            status_sessao = true;
+    }
+
+    return status_sessao
+   
+  }
+
+  logout_sessao(){
+
+  }
 
 
+  
   async componentDidMount(){
 
-    if(this.state.value!=''){
-                  
-              const response = await api.get('pessoasassistidas/'+this.state.value+'/'
-              ,
-            {     auth: {
-                username: 'est.joao.f',
-                password: 'Lamburguini456'
-              },
-            }
-              );
-              this.setState({
-                assitido:response.data
-              });
+    /* verifica se a usuario em sessao se não chama o method de login */
+    if(this.state.usuario ==''){
+      this.login_sessao()
     }
+
+
+      if(this.state.value!=''){
+
+        const response = await api.get('pessoasassistidas/'+this.state.value+'/'
+        ,
+      {     auth: {
+          username: sessionStorage.getItem("usuario"),
+          password: sessionStorage.getItem("senha")
+        },
+      }
+        );
+        this.setState({
+          assitido:response.data
+        });
+  }
+
+
+
+
+
+
+
+
+
+    
   }
  
 
   render() {
- 
-     console.log(this.state.assitido)
-      console.log(this.state.value)
- 
-
     return (
 
       
 
       <SafeAreaView style={styles.container}>
-        <Menu></Menu>
-<br></br>
+        <Menu ></Menu>
+<             br></br>
               <div className="container text-center">
                   <Form onSubmit={this.handleSubmit}>
                     <label>
                       Buscar Id Assistido:
                     </label> 
                     
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input type="text" onChange={this.handleChange} />
                     <input type="submit" value="Buscar" />
 
                   </Form>
               </div>
-<br></br>
+              <br></br>
 
 
       <Form>

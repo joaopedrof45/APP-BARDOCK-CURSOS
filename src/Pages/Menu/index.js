@@ -17,8 +17,24 @@ import {
 
 const Headers = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-
+   
     const toggle = () => setIsOpen(!isOpen);
+
+
+    var login_status = [];
+    login_status = sessionStorage.getItem("usuario");
+    var url_login = '';
+    var status_string = '';
+
+
+/* verificando sessão */
+    if(login_status==null){
+         status_string = 'Fazer Login'
+         url_login ='/logar'
+    }else{
+        status_string = 'Fazer Logout'
+        url_login ='/deslogar'
+    }
 
     return (
         <div>
@@ -44,6 +60,10 @@ const Headers = (props) => {
                                         <DropdownItem> Teste 1</DropdownItem>
                                     </DropdownMenu>
                         </UncontrolledDropdown>
+
+                        <NavItem>
+                            <NavLink href={url_login}>{status_string}</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

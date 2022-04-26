@@ -6,7 +6,9 @@ import { Card } from 'reactstrap';
 
 
 
+
 export default class Curso extends Component{
+    
     render(){
 
         if(this.props.data!=''){
